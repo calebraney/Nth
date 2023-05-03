@@ -1,7 +1,18 @@
+//v1.0.0
 // Webflow is initialized
 window.Webflow ||= [];
 window.Webflow.push(() => {
   // Run code once webflow is initialized
+
+  // GSAP ANIMATIONS
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Keep lenis and scrolltrigger in sync
+  lenis.on('scroll', () => {
+    if (!ScrollTrigger) return;
+    ScrollTrigger.update();
+  });
+
   let typeSplit = new SplitType('[split-text]', {
     types: 'lines, words, chars',
   });
